@@ -1,17 +1,17 @@
-#Your first NumPy array
+# Your first NumPy array
 
-###### Import NumPy
+### Import NumPy
 import numpy as np
 
-###### Convert sudoku_list into an array
+### Convert sudoku_list into an array
 sudoku_array = np.array(sudoku_list)
 
-###### Print the type of sudoku_array 
+### Print the type of sudoku_array 
 print(type(sudoku_array))
 
-#Creating arrays from scratch
+# Creating arrays from scratch
 
-###### Create an array of zeros which has four columns and two rows
+### Create an array of zeros which has four columns and two rows
 zero_array = np.zeros((2, 4))
 print(zero_array)
 
@@ -19,7 +19,7 @@ print(zero_array)
 random_array = np.random.random((3, 6))
 print(random_array)
 
-A range array
+# A range array
 
 ### Create an array of integers from one to ten
 one_to_ten = np.arange(1,11)
