@@ -1,4 +1,4 @@
-Your first NumPy array
+######Your first NumPy array
 
 # Import NumPy
 import numpy as np
@@ -45,3 +45,18 @@ games_and_solutions = np.array([game_and_solution, new_game_and_solution])
 
 # Print the shape of your 4D array
 print(games_and_solutions.shape)
+
+Flattening and reshaping
+
+# Flatten sudoku_game
+flattened_game = sudoku_game.flatten()
+
+# Print the shape of flattened_game
+print(flattened_game.shape)
+
+# Reshape flattened_game back to a nine by nine array
+reshaped_game = flattened_game.reshape(9, 9)
+
+# Print sudoku_game and reshaped_game
+print(sudoku_game)
+print(reshaped_game)
