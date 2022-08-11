@@ -92,9 +92,14 @@ print(small_sudoku_game.dtype)
 ~~~
 # Slicing and indexing trees
 ~~~
-### Select all rows of block ID data from the second column
+### #Select all rows of block ID data from the second column
 block_ids = tree_census[:, 1]
-
 ### Print the first five block_ids
 print(block_ids[:5])
+### #Select the tenth block ID from block_ids
+tenth_block_id = block_ids[9]
+print(tenth_block_id)
+### #Select five block IDs from block_ids starting with the tenth ID
+block_id_slice = block_ids[9:14]
+print(block_id_slice)
 ~~~
