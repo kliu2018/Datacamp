@@ -1,20 +1,4 @@
 Your first NumPy array
-Once you're comfortable with NumPy, you'll find yourself converting Python lists into NumPy arrays all the time for increased speed and access to NumPy's excellent array methods.
-
-sudoku_list is a Python list containing a sudoku game:
-
-[[0, 0, 4, 3, 0, 0, 2, 0, 9],
- [0, 0, 5, 0, 0, 9, 0, 0, 1],
- [0, 7, 0, 0, 6, 0, 0, 4, 3],
- [0, 0, 6, 0, 0, 2, 0, 8, 7],
- [1, 9, 0, 0, 0, 7, 4, 0, 0],
- [0, 5, 0, 0, 8, 3, 0, 0, 0],
- [6, 0, 0, 0, 0, 0, 1, 0, 5],
- [0, 0, 3, 5, 0, 8, 6, 9, 0],
- [0, 4, 2, 9, 1, 0, 3, 0, 0]]
-You're going to change sudoku_list into a NumPy array so you can practice with it in later lessons, for example by creating a 4D array of sudoku games along with their solutions!
-
-
 
 # Import NumPy
 import numpy as np
@@ -24,3 +8,40 @@ sudoku_array = np.array(sudoku_list)
 
 # Print the type of sudoku_array 
 print(type(sudoku_array))
+
+Creating arrays from scratch
+
+# Create an array of zeros which has four columns and two rows
+zero_array = np.zeros((2, 4))
+print(zero_array)
+
+# Create an array of random floats which has six columns and three rows
+random_array = np.random.random((3, 6))
+print(random_array)
+
+A range array
+
+# Create an array of integers from one to ten
+one_to_ten = np.arange(1,11)
+
+# Create your scatterplot
+plt.scatter(x=one_to_ten, y=doubling_array)
+plt.show()
+
+3D array creation
+# Create the game_and_solution 3D array
+game_and_solution = np.array([sudoku_game, sudoku_solution])
+
+# Print game_and_solution
+print(game_and_solution) 
+
+The fourth dimension
+
+# Create a second 3D array of another game and its solution 
+new_game_and_solution = np.array([new_sudoku_game, new_sudoku_solution])
+
+# Create a 4D array of both game and solution 3D arrays
+games_and_solutions = np.array([game_and_solution, new_game_and_solution])
+
+# Print the shape of your 4D array
+print(games_and_solutions.shape)
