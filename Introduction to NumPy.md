@@ -1,5 +1,5 @@
 # Your first NumPy array
-
+~~~
 ### Import NumPy
 import numpy as np
 
@@ -8,7 +8,7 @@ sudoku_array = np.array(sudoku_list)
 
 ### Print the type of sudoku_array 
 print(type(sudoku_array))
-
+~~~
 # Creating arrays from scratch
 
 ### Create an array of zeros which has four columns and two rows
