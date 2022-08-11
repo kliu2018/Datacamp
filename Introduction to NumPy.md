@@ -1,6 +1,6 @@
 Your first NumPy array
 
-### Import NumPy
+###### Import NumPy
 import numpy as np
 
 ### Convert sudoku_list into an array
