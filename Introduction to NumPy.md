@@ -104,7 +104,7 @@ print(tenth_block_id)
 block_id_slice = block_ids[9:14]
 print(block_id_slice)
 ~~~
-# Stepping into 2D
+## Stepping into 2D
 ~~~
 ### Create an array of the first 100 trunk diameters from tree_census
 hundred_diameters = tree_census[:100, 2]
@@ -113,7 +113,19 @@ print(hundred_diameters)
 every_other_diameter = tree_census[50:101:2, 2]
 print(every_other_diameter)
 ~~~
-# Sorting trees
+## Sorting trees
 ### Extract trunk diameters information and sort from smallest to largest
 sorted_trunk_diameters = np.sort(tree_census[:,2], axis=0)
 print(sorted_trunk_diameters)
+## Filtering with masks
+~~~
+> Create an array which contains row data on the largest tree in tree_census
+largest_tree_data = tree_census[tree_census[:, 2]==51]
+print(largest_tree_data)
+> Slice largest_tree_data to get only the block id
+largest_tree_block_id = largest_tree_data[:,1]
+print(largest_tree_block_id)
+> Create an array which contains row data on all trees with largest_tree_block_id
+trees_on_largest_tree_block = tree_census[tree_census[:,1]==501882]
+print(trees_on_largest_tree_block)
+~~~
