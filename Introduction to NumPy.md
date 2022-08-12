@@ -192,3 +192,100 @@ print(tree_census_clean.shape)
 ~~~
 
 # Array Mathematics!
+## Sales totals
+~~~
+# Create a 2D array of total monthly sales across industries
+monthly_industry_sales = monthly_sales.sum(axis=1, keepdims=1)
+print(monthly_industry_sales)
+
+# Add this column as the last column in monthly_sales
+monthly_sales_with_total = np.concatenate((monthly_sales, monthly_industry_sales), axis=1)
+print(monthly_sales_with_total)
+~~~
+
+## Plotting averages
+~~~
+# Create the 1D array avg_monthly_sales
+avg_monthly_sales = monthly_sales.mean(axis=1)
+print(avg_monthly_sales)
+
+# Plot avg_monthly_sales by month
+plt.plot(np.arange(1,13), avg_monthly_sales, label="Average sales across industries")
+
+# Plot department store sales by month
+plt.plot(np.arange(1,13), monthly_sales[:, 2], label="Department store sales")
+plt.legend()
+plt.show()
+~~~
+## Cumulative sales
+~~~
+# Find cumulative monthly sales for each industry
+cumulative_monthly_industry_sales = monthly_sales.cumsum(axis=0)
+print(cumulative_monthly_industry_sales)
+
+# Plot each industry's cumulative sales by month as separate lines
+plt.plot(np.arange(1, 13), cumulative_monthly_industry_sales[:,0], label="Liquor Stores")
+plt.plot(np.arange(1, 13), cumulative_monthly_industry_sales[:,1], label="Restaurants")
+plt.plot(np.arange(1, 13), cumulative_monthly_industry_sales[:,2], label="Department stores")
+plt.legend()
+plt.show()
+~~~
+
+## Tax calculations
+~~~
+# Create an array of tax collected by industry and month
+tax_collected = monthly_sales * 0.05
+print(tax_collected)
+# Create an array of sales revenue plus tax collected by industry and month
+total_tax_and_revenue = monthly_sales + tax_collected
+print(total_tax_and_revenue)
+~~~
+
+## Projecting sales
+~~~
+# Create an array of monthly projected sales for all industries
+projected_monthly_sales = monthly_sales * monthly_industry_multipliers
+print(projected_monthly_sales)
+
+# Graph current liquor store sales and projected liquor store sales by month
+plt.plot(np.arange(1,13), monthly_sales[:, 0], label="Current liquor store sales")
+plt.plot(np.arange(1,13), projected_monthly_sales[:, 0], label="Projected liquor store sales")
+plt.legend()
+plt.show()
+~~~
+
+## Vectorizing .upper()
+~~~
+# Vectorize the .upper() string method
+vectorized_upper = np.vectorize(str.upper)
+
+# Apply vectorized_upper to the names array
+uppercase_names = vectorized_upper(names)
+print(uppercase_names)
+~~~
+
+## Broadcasting across columns
+~~~
+# Convert monthly_growth_rate into a NumPy array
+monthly_growth_1D = np.array(monthly_growth_rate)
+
+# Reshape monthly_growth_1D
+monthly_growth_2D = monthly_growth_1D.reshape((12,1))
+
+# Multiply each column in monthly_sales by monthly_growth_2D
+print(monthly_sales* monthly_growth_2D)
+~~~
+
+## Broadcasting across rows
+~~~
+# Find the mean sales projection multiplier for each industry
+mean_multipliers = monthly_industry_multipliers.mean(axis=0)
+print(mean_multipliers)
+
+# Print the shapes of mean_multipliers and monthly_sales
+print(mean_multipliers.shape, monthly_sales.shape)
+
+# Multiply each value by the multiplier for that industry
+projected_sales = monthly_sales * mean_multipliers
+print(projected_sales)
+~~~
