@@ -175,6 +175,8 @@ def better_add_column(values, df=None):
   df['col_{}'.format(len(df.columns))] = values
   return df
 ~~~
+
+# Context Managers
 ## The number of cats
 ~~~
 # Open "alice.txt" and assign the file to "file"
@@ -281,6 +283,7 @@ with stock('NVDA') as nvda:
     os.chdir(current_dir)
 ~~~
 
+# Decorators
 ## Building a command line data app
 ~~~
 # Add the missing function references to the function map
@@ -533,3 +536,122 @@ multiply(5, 10)
 ~~~
 
 # More on Decorators
+## Print the return type
+~~~
+def print_return_type(func):
+  # Define wrapper(), the decorated function
+  def wrapper(*args, **kwargs):
+    # Call the function being decorated
+    result = func(*args, **kwargs)
+    print('{}() returned type {}'.format(
+      func.__name__, type(result)
+    ))
+    return result
+  # Return the decorated function
+  return wrapper
+  
+@print_return_type
+def foo(value):
+  return value
+  
+print(foo(42))
+print(foo([1, 2, 3]))
+print(foo({'a': 42}))
+~~~
+
+## Counter
+~~~
+def counter(func):
+  def wrapper(*args, **kwargs):
+    wrapper.count += 1
+    # Call the function being decorated and return the result
+    return wrapper.count
+  wrapper.count = 0
+  # Return the new decorated function
+  return wrapper
+
+# Decorate foo() with the counter() decorator
+@counter
+def foo():
+  print('calling foo()')
+  
+foo()
+foo()
+
+print('foo() was called {} times.'.format(foo.count))
+~~~
+
+## Preserving docstrings when decorating functions
+~~~
+def add_hello(func):
+  def wrapper(*args, **kwargs):
+    print('Hello')
+    return func(*args, **kwargs)
+  return wrapper
+
+# Decorate print_sum() with the add_hello() decorator
+@add_hello
+def print_sum(a, b):
+  """Adds two numbers and prints the sum"""
+  print(a + b)
+  
+print_sum(10, 20)
+print_sum_docstring = print_sum.__doc__
+print(print_sum_docstring)
+
+def add_hello(func):
+  # Add a docstring to wrapper
+  def wrapper(*args, **kwargs):
+    """Print 'hello' and then call the decorated function."""
+    print('Hello')
+    return func(*args, **kwargs)
+  return wrapper
+
+@add_hello
+def print_sum(a, b):
+  """Adds two numbers and prints the sum"""
+  print(a + b)
+  
+print_sum(10, 20)
+print_sum_docstring = print_sum.__doc__
+print(print_sum_docstring)
+
+# Import the function you need to fix the problem
+from functools import wraps
+
+def add_hello(func):
+  def wrapper(*args, **kwargs):
+    """Print 'hello' and then call the decorated function."""
+    print('Hello')
+    return func(*args, **kwargs)
+  return wrapper
+  
+@add_hello
+def print_sum(a, b):
+  """Adds two numbers and prints the sum"""
+  print(a + b)
+  
+print_sum(10, 20)
+print_sum_docstring = print_sum.__doc__
+print(print_sum_docstring)
+
+from functools import wraps
+
+def add_hello(func):
+  # Decorate wrapper() so that it keeps func()'s metadata
+  @wraps(func)
+  def wrapper(*args, **kwargs):
+    """Print 'hello' and then call the decorated function."""
+    print('Hello')
+    return func(*args, **kwargs)
+  return wrapper
+  
+@add_hello
+def print_sum(a, b):
+  """Adds two numbers and prints the sum"""
+  print(a + b)
+  
+print_sum(10, 20)
+print_sum_docstring = print_sum.__doc__
+print(print_sum_docstring)
+~~~
