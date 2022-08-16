@@ -72,3 +72,11 @@ print('Single full-term mean:', single_full_term_weight.mean())
 mult_full_term_weight = birth_weight[~single & full_term]
 print('Multiple full-term mean:', mult_full_term_weight.mean())
 ~~~
+## Make a PMF
+~~~
+# Compute the PMF for year
+pmf_year = Pmf(gss['year'], normalize=False)
+
+# Print the result
+print(pmf_year)
+~~~
