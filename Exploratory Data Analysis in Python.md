@@ -80,3 +80,60 @@ pmf_year = Pmf(gss['year'], normalize=False)
 # Print the result
 print(pmf_year)
 ~~~
+## Plot a PMF
+~~~
+# Select the age column
+age = gss['age']
+
+# Make a PMF of age
+pmf_age = Pmf(age)
+
+# Plot the PMF
+pmf_age.bar()
+
+# Label the axes
+plt.xlabel('Age')
+plt.ylabel('PMF')
+plt.show()
+~~~
+## Make a CDF
+~~~
+# Select the age column
+age = gss['age']
+
+# Compute the CDF of age
+cdf_age = Cdf(age)
+
+# Calculate the CDF of 30
+print(cdf_age(30))
+~~~
+## Compute IQR
+~~~
+# Calculate the 75th percentile 
+percentile_75th = cdf_income.inverse(0.75)
+
+# Calculate the 25th percentile
+percentile_25th = cdf_income.inverse(0.25)
+
+# Calculate the interquartile range
+iqr = percentile_75th - percentile_25th
+
+# Print the interquartile range
+print(iqr)
+~~~
+## Plot a CDF
+~~~
+# Select realinc
+income = gss['realinc']
+
+# Make the CDF
+cdf_income = Cdf(income)
+
+# Plot it
+cdf_income.plot()
+
+# Label the axes
+plt.xlabel('Income (1986 USD)')
+plt.ylabel('CDF')
+plt.show()
+~~~
