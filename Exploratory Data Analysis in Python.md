@@ -80,6 +80,7 @@ pmf_year = Pmf(gss['year'], normalize=False)
 # Print the result
 print(pmf_year)
 ~~~
+# Distributions
 ## Plot a PMF
 ~~~
 # Select the age column
@@ -350,4 +351,20 @@ plt.ylabel('Vegetable servings per day')
 plt.ylim([0, 6])
 plt.show()
 ~~~
-## 
+# Multivariate Thinking
+## Using StatsModels
+~~~ 
+from scipy.stats import linregress
+import statsmodels.formula.api as smf
+
+# Run regression with linregress
+subset = brfss.dropna(subset=['INCOME2', '_VEGESU1'])
+xs = subset['INCOME2']
+ys = subset['_VEGESU1']
+res = linregress(xs, ys)
+print(res)
+
+# Run regression with StatsModels
+results = smf.ols('INCOME2 ~ _VEGESU1', data = subset).fit()
+print(results.params)
+~~~
