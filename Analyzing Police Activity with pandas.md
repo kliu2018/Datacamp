@@ -49,3 +49,25 @@ ri['is_arrested'] = ri.is_arrested.astype('bool')
 # Check the data type of 'is_arrested' 
 print(ri.is_arrested.dtype)
 ~~~
+## Combining object columns
+~~~
+# Concatenate 'stop_date' and 'stop_time' (separated by a space)
+combined = ri.stop_date.str.cat(ri.stop_time, sep=" ")
+
+# Convert 'combined' to datetime format
+ri['stop_datetime'] = pd.to_datetime(combined)
+
+# Examine the data types of the DataFrame
+print(ri.dtypes)
+~~~
+## Setting the index
+~~~
+# Set 'stop_datetime' as the index
+ri.set_index('stop_datetime', inplace=True)
+
+# Examine the index
+print(ri.index)
+
+# Examine the columns
+print(ri.columns)
+~~~
