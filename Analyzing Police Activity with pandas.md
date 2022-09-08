@@ -127,3 +127,35 @@ print(ri[ri.driver_gender == 'M'].search_conducted.mean())
 # Calculate the search rate for both groups simultaneously
 print(ri.groupby('driver_gender').search_conducted.mean())
 ~~~
+## Adding a second factor to the analysis
+~~~
+# Calculate the search rate for each combination of gender and violation
+print(ri.groupby(['driver_gender', 'violation']).search_conducted.mean())
+# Reverse the ordering to group by violation before gender
+~~~
+## Counting protective frisks
+~~~
+# Count the 'search_type' values
+print(ri.search_type.value_counts())
+
+# Check if 'search_type' contains the string 'Protective Frisk'
+ri['frisk'] = ri.search_type.str.contains('Protective Frisk', na=False)
+
+# Check the data type of 'frisk'
+print(ri.frisk.dtype)
+
+# Take the sum of 'frisk'
+print(ri.frisk.sum())
+print(ri.groupby(['violation', 'driver_gender']).search_conducted.mean())
+~~~
+## Comparing frisk rates by gender
+~~~
+# Create a DataFrame of stops in which a search was conducted
+searched = ri[ri.search_conducted == True]
+
+# Calculate the overall frisk rate by taking the mean of 'frisk'
+print(searched.frisk.mean())
+
+# Calculate the frisk rate for each gender
+print(searched.groupby('driver_gender').frisk.mean())
+~~~
