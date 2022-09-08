@@ -107,3 +107,23 @@ print(female_and_speeding.stop_outcome.value_counts(normalize=True))
 # Compute the stop outcomes for male drivers (as proportions)
 print(male_and_speeding.stop_outcome.value_counts(normalize=True))
 ~~~
+## Calculating the search rate
+~~~
+# Check the data type of 'search_conducted'
+print(ri.search_conducted.dtype)
+
+# Calculate the search rate by counting the values
+print(ri.search_conducted.value_counts(normalize=True))
+
+# Calculate the search rate by taking the mean
+print(ri.search_conducted.mean())
+~~~
+## Comparing search rates by gender
+~~~
+# Calculate the search rate for female drivers
+print(ri[ri.driver_gender == 'F'].search_conducted.mean())
+# Calculate the search rate for male drivers
+print(ri[ri.driver_gender == 'M'].search_conducted.mean())
+# Calculate the search rate for both groups simultaneously
+print(ri.groupby('driver_gender').search_conducted.mean())
+~~~
