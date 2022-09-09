@@ -159,3 +159,30 @@ print(searched.frisk.mean())
 # Calculate the frisk rate for each gender
 print(searched.groupby('driver_gender').frisk.mean())
 ~~~
+## Calculating the hourly arrest rate
+~~~
+# Calculate the overall arrest rate
+print(ri.is_arrested.mean())
+
+# Calculate the hourly arrest rate
+print(ri.groupby(ri.index.hour).is_arrested.mean())
+
+# Save the hourly arrest rate
+hourly_arrest_rate = ri.groupby(ri.index.hour).is_arrested.mean()
+~~~
+## Plotting the hourly arrest rate
+~~~
+# Import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+# Create a line plot of 'hourly_arrest_rate'
+hourly_arrest_rate.plot()
+
+# Add the xlabel, ylabel, and title
+plt.xlabel('Hour')
+plt.ylabel('Arrest Rate')
+plt.title('Arrest Rate by Time of Day')
+
+# Display the plot
+plt.show()
+~~~
