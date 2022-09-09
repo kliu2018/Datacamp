@@ -71,6 +71,7 @@ print(ri.index)
 # Examine the columns
 print(ri.columns)
 ~~~
+# Exploring the relationship between gender and policing
 ## Examining traffic violations
 ~~~
 # Count the unique values in 'violation'
@@ -159,6 +160,7 @@ print(searched.frisk.mean())
 # Calculate the frisk rate for each gender
 print(searched.groupby('driver_gender').frisk.mean())
 ~~~
+# Visual exploratory data analysis
 ## Calculating the hourly arrest rate
 ~~~
 # Calculate the overall arrest rate
@@ -184,5 +186,33 @@ plt.ylabel('Arrest Rate')
 plt.title('Arrest Rate by Time of Day')
 
 # Display the plot
+plt.show()
+~~~
+## Plotting drug-related stops
+~~~
+# Calculate the annual rate of drug-related stops
+print(ri.drugs_related_stop.resample('A').mean())
+
+# Save the annual rate of drug-related stops
+annual_drug_rate = ri.drugs_related_stop.resample('A').mean()
+
+# Create a line plot of 'annual_drug_rate'
+annual_drug_rate.plot()
+
+# Display the plot
+plt.show()
+~~~
+## Comparing drug and search rates
+~~~
+# Calculate and save the annual search rate
+annual_search_rate = ri.search_conducted.resample('A').mean()
+
+# Concatenate 'annual_drug_rate' and 'annual_search_rate'
+annual = pd.concat([annual_drug_rate, annual_search_rate], axis='columns')
+
+# Create subplots from 'annual'
+annual.plot(subplots=True)
+
+# Display the subplots
 plt.show()
 ~~~
