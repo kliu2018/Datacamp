@@ -1,4 +1,4 @@
-#Preparing the data for analysis
+# Preparing the data for analysis
 ## Examing the dataset
 ~~~
 # Import the pandas library as pd
