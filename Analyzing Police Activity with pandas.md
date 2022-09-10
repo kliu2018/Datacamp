@@ -231,9 +231,9 @@ print(all_zones.loc['Zone K1' : 'Zone K3'])
 k_zones = all_zones.loc['Zone K1' : 'Zone K3']
 ~~~
 ## Plotting violations by district
+~~~
 # Create a bar plot of 'k_zones'
 k_zones.plot(kind='bar')
-
 # Display the plot
 plt.show()
 
@@ -242,4 +242,18 @@ k_zones.plot(kind='bar', stacked=True)
 
 # Display the plot
 plt.show()
+~~~
+## Converting stop durations to numbers
+~~~
+# Print the unique values in 'stop_duration'
+print(ri.stop_duration.unique())
+
+# Create a dictionary that maps strings to integers
+mapping = {'0-15 Min' : 8, '16-30 Min' : 23, '30+ Min' : 45}
+
+# Convert the 'stop_duration' strings to integers using the 'mapping'
+ri['stop_minutes'] = ri.stop_duration.map(mapping)
+
+# Print the unique values in 'stop_minutes'
+print(ri.stop_minutes.unique())
 ~~~
