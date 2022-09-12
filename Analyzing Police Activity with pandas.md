@@ -286,3 +286,34 @@ weather[['TMIN', 'TAVG', 'TMAX']].plot(kind='box')
 # Display the plot
 plt.show()
 ~~~
+## Plotting the temperature difference
+~~~
+# Create a 'TDIFF' column that represents temperature difference
+weather['TDIFF'] = weather.TMAX - weather.TMIN
+
+# Describe the 'TDIFF' column
+print(weather.TDIFF.describe())
+
+# Create a histogram with 20 bins to visualize 'TDIFF'
+weather.TDIFF.plot(kind='hist', bins=20)
+
+# Display the plot
+plt.show()
+~~~
+## Counting bad weather conditions
+~~~
+# Copy 'WT01' through 'WT22' to a new DataFrame
+WT = weather.loc[:, 'WT01':'WT22']
+
+# Calculate the sum of each row in 'WT'
+weather['bad_conditions'] = WT.sum(axis='columns')
+
+# Replace missing values in 'bad_conditions' with '0'
+weather['bad_conditions'] = weather.bad_conditions.fillna(0).astype('int')
+
+# Create a histogram to visualize 'bad_conditions'
+weather.bad_conditions.plot(kind='hist')
+
+# Display the plot
+plt.show()
+~~~
