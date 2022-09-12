@@ -331,3 +331,14 @@ weather['rating'] = weather.bad_conditions.map(mapping)
 # Count the unique values in 'rating'
 print(weather.rating.value_counts())
 ~~~
+## Changing the data type to category
+~~~
+# Specify the logical order of the weather ratings
+cats = pd.CategoricalDtype(['good', 'bad', 'worse'], ordered=True)
+
+# Change the data type of 'rating' to category
+weather['rating'] = weather.rating.astype(cats)
+
+# Examine the head of 'rating'
+print(weather.rating.head())
+~~~
