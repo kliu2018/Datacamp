@@ -393,3 +393,11 @@ print(arrest_rate.loc['Moving violation', 'bad'])
 # Print the arrest rates for speeding violations in all three weather conditions
 print(arrest_rate.loc['Speeding'])
 ~~~
+## Reshaping the arrest rate data
+~~~
+# Unstack the 'arrest_rate' Series into a DataFrame
+print(arrest_rate.unstack())
+
+# Create the same DataFrame using a pivot table
+print(ri_weather.pivot_table(index='violation', columns='rating', values='is_arrested'))
+~~~
