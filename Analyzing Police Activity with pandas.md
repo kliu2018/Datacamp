@@ -370,3 +370,12 @@ print(ri_weather.shape)
 # Set 'stop_datetime' as the index of 'ri_weather'
 ri_weather.set_index('stop_datetime', inplace=True)
 ~~~
+## Comparing arrest rates by weather rating
+~~~
+# Calculate the overall arrest rate
+print(ri_weather.is_arrested.mean())
+# Calculate the arrest rate for each 'rating'
+print(ri_weather.groupby('rating').is_arrested.mean())
+# Calculate the arrest rate for each 'violation' and 'rating'
+print(ri_weather.groupby(['violation', 'rating']).is_arrested.mean())
+~~~
