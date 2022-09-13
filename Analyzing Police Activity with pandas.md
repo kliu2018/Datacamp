@@ -342,3 +342,31 @@ weather['rating'] = weather.rating.astype(cats)
 # Examine the head of 'rating'
 print(weather.rating.head())
 ~~~
+## Preparing the DataFrames
+~~~
+# Reset the index of 'ri'
+ri.reset_index(inplace=True)
+
+# Examine the head of 'ri'
+print(ri.head())
+
+# Create a DataFrame from the 'DATE' and 'rating' columns
+weather_rating = weather[['DATE', 'rating']]
+
+# Examine the head of 'weather_rating'
+print(weather_rating.head())
+~~~
+## Merging the DataFrames
+~~~
+# Examine the shape of 'ri'
+print(ri.shape)
+
+# Merge 'ri' and 'weather_rating' using a left join
+ri_weather = pd.merge(left=ri, right=weather_rating, left_on='stop_date', right_on='DATE', how='left')
+
+# Examine the shape of 'ri_weather'
+print(ri_weather.shape)
+
+# Set 'stop_datetime' as the index of 'ri_weather'
+ri_weather.set_index('stop_datetime', inplace=True)
+~~~
