@@ -27,3 +27,20 @@ be_and_usa = food_consumption[(food_consumption['country']=='Belgium') | (food_c
 # Group by country, select consumption column, and compute mean and median
 print(be_and_usa.groupby('country')['consumption'].agg([np.mean, np.median]))
 ~~~
+## Mean vs. median
+~~~
+# Import matplotlib.pyplot with alias plt
+import matplotlib.pyplot as plt
+
+# Subset for food_category equals rice
+rice_consumption = food_consumption[food_consumption['food_category']=='rice']
+# Histogram of co2_emission for rice and show plot
+rice_consumption.co2_emission.hist()
+plt.show()
+
+# Subset for food_category equals rice
+rice_consumption = food_consumption[food_consumption['food_category'] == 'rice']
+
+# Calculate mean and median of co2_emission with .agg()
+print(rice_consumption['co2_emission'].agg([np.mean, np.median]))
+
