@@ -114,3 +114,14 @@ upper = q3 + 1.5 * iqr
 outliers = emissions_by_country[(emissions_by_country <lower) | (emissions_by_country > upper)]
 print(outliers)
 ~~~
+# Random Numbers and Probability
+## Calculating probabilities
+~~~
+# Count the deals for each product
+counts = amir_deals['product'].value_counts()
+print(counts)
+
+# Calculate probability of picking a deal with each product
+probs = counts / sum(counts)
+print(probs)
+~~~
