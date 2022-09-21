@@ -222,6 +222,7 @@ prob_between_10_and_20 = uniform.cdf(20, 0, 30) - uniform.cdf(10, 0, 30)
 print(prob_between_10_and_20)
 ~~~
 ## Data back-ups
+~~~
 # Min and max wait times for back-up that happens every 30 min
 min_time = 0
 max_time = 30
