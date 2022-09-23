@@ -404,6 +404,7 @@ sample_means_series = pd.Series(sample_means)
 sample_means_series.hist()
 # Show plot
 plt.show()
+~~~
 ## The mean of means
 ~~~
 # Set seed to 321
