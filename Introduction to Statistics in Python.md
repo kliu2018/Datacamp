@@ -308,3 +308,10 @@ print(won_25pct)
 won_35pct = 3 * 0.35
 print(won_35pct)
 ~~~
+# More Distributions and the Central Limit Theorem
+## Distribution of Amir's sales
+~~~
+# Histogram of amount with 10 bins and show plot
+amir_deals['amount'].hist(bins=10)
+plt.show()
+~~~
