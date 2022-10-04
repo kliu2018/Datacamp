@@ -81,3 +81,42 @@ mdl_price_vs_age0 = ols("price_twd_msq ~ house_age_years + 0", data=taiwan_real_
 # Print the parameters of the fitted model
 print(mdl_price_vs_age0.params)
 ~~~
+# Predictions and model objects
+## Predicting house prices
+~~~
+# Import numpy with alias np
+import numpy as np
+
+# Create the explanatory_data 
+explanatory_data = pd.DataFrame({'n_convenience': np.arange(0,11)})
+
+# Print it
+print(explanatory_data)
+
+# Import numpy with alias np
+import numpy as np
+
+# Create explanatory_data 
+explanatory_data = pd.DataFrame({'n_convenience': np.arange(0, 11)})
+
+# Use mdl_price_vs_conv to predict with explanatory_data, call it price_twd_msq
+price_twd_msq = mdl_price_vs_conv.predict(explanatory_data)
+# Print it
+print(price_twd_msq)
+
+# Import numpy with alias np
+import numpy as np
+
+# Create explanatory_data 
+explanatory_data = pd.DataFrame({'n_convenience': np.arange(0, 11)})
+
+# Use mdl_price_vs_conv to predict with explanatory_data, call it price_twd_msq
+price_twd_msq = mdl_price_vs_conv.predict(explanatory_data)
+
+# Create prediction_data
+prediction_data = explanatory_data.assign(
+    price_twd_msq= price_twd_msq)
+
+# Print the result
+print(prediction_data)
+~~~
