@@ -394,3 +394,27 @@ taiwan_real_estate['cooks_dist'] = summary_info['cooks_d']
 # Sort taiwan_real_estate by cooks_dist in descending order and print the head.
 print(taiwan_real_estate.sort_values('cooks_dist', ascending=False).head())
 ~~~
+# Simple Logistic Regression Modeling
+## Visualizing linear and logistic models
+~~~
+# Create the histograms of time_since_last_purchase split by has_churned
+sns.displot(x='time_since_last_purchase', y='has_churned', col='has_churned', data=churn)
+
+plt.show()
+
+# Redraw the plot with time_since_first_purchase
+sns.displot(x='time_since_first_purchase', y='has_churned', col='has_churned', data=churn)
+
+plt.show()
+~~~
+## Logistic regression with logit()
+~~~
+# Import logit
+from statsmodels.formula.api import logit
+
+# Fit a logistic regression of churn vs. length of relationship using the churn dataset
+mdl_churn_vs_relationship = logit('has_churned ~ time_since_first_purchase', data=churn).fit()
+
+# Print the parameters of the fitted model
+print(mdl_churn_vs_relationship.params)
+~~~
