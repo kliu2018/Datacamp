@@ -104,3 +104,20 @@ attrition_samp = attrition_pop.sample(n=70, random_state=18900217)
 # Print the sample
 print(attrition_samp)
 ~~~
+## Systematic sampling
+~~~
+# Set the sample size to 70
+sample_size = 70
+
+# Calculate the population size from attrition_pop
+pop_size = len(attrition_pop)
+
+# Calculate the interval
+interval = pop_size // sample_size
+
+# Systematically sample 70 rows
+attrition_sys_samp = attrition_pop[::interval]
+
+# Print the sample
+print(attrition_sys_samp)
+~~~
