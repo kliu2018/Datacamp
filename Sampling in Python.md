@@ -44,3 +44,23 @@ mean_loudness_samp = loudness_samp.mean()
 print(mean_loudness_pop)
 print(mean_loudness_samp)
 ~~~
+## Are findings from the sample generalizable?
+~~~
+# Visualize the distribution of acousticness with a histogram
+spotify_population['acousticness'].hist(bins=np.arange(0, 1.01, 0.01))
+plt.show()
+
+# Update the histogram to use spotify_mysterious_sample
+spotify_mysterious_sample['acousticness'].hist(bins=np.arange(0, 1.01, 0.01))
+plt.show()
+~~~
+## Are these findings generalizable?
+~~~
+# Visualize the distribution of duration_minutes as a histogram
+spotify_population['duration_minutes'].hist(bins=np.arange(0, 15.5, 0.5))
+plt.show()
+
+# Update the histogram to use spotify_mysterious_sample2
+spotify_mysterious_sample2['duration_minutes'].hist(bins=np.arange(0, 15.5, 0.5))
+plt.show()
+~~~
