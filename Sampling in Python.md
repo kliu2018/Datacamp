@@ -94,3 +94,11 @@ normals = np.random.normal(loc=5, scale=2, size=5000)
 # Plot a histogram of normal values, binwidth 0.5
 plt.hist(normals, bins=np.arange(-2, 13.5, 0.5))
 plt.show()
+# Sampling Methods
+## Simple random sampling
+# Sample 70 rows using simple random sampling and set the seed
+attrition_samp = attrition_pop.sample(n=70, random_state=18900217)
+
+# Print the sample
+print(attrition_samp)
+~~~
