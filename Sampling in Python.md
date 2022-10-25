@@ -140,3 +140,40 @@ attrition_shuffled = attrition_shuffled.reset_index(drop=True).reset_index()
 attrition_shuffled.plot(x='index', y='YearsAtCompany', kind='scatter')
 plt.show()
 ~~~
+## Proportional stratified sampling
+~~~
+# Proportion of employees by Education level
+education_counts_pop = attrition_pop.value_counts('Education', normalize=True)
+
+# Print education_counts_pop
+print(education_counts_pop)
+
+# Proportion of employees by Education level
+education_counts_pop = attrition_pop['Education'].value_counts(normalize=True)
+
+# Print education_counts_pop
+print(education_counts_pop)
+
+# Proportional stratified sampling for 40% of each Education group
+attrition_strat = attrition_pop.groupby('Education').sample(frac=0.4, random_state=2022)
+
+
+# Print the sample
+print(attrition_strat)
+
+# Proportion of employees by Education level
+education_counts_pop = attrition_pop['Education'].value_counts(normalize=True)
+
+# Print education_counts_pop
+print(education_counts_pop)
+
+# Proportional stratified sampling for 40% of each Education group
+attrition_strat = attrition_pop.groupby('Education')\
+	.sample(frac=0.4, random_state=2022)
+
+# Calculate the Education level proportions from attrition_strat
+education_counts_strat = attrition_strat['Education'].value_counts(normalize=True)
+
+# Print education_counts_strat
+print(education_counts_strat)
+~~~
