@@ -208,3 +208,47 @@ print(attrition_weight)
 attrition_weight['YearsAtCompany'].hist(bins=np.arange(0, 41, 1))
 plt.show()
 ~~~
+## Performing cluster sampling
+~~~
+# Create a list of unique JobRole values
+job_roles_pop = list(attrition_pop['JobRole'].unique())
+
+# Randomly sample four JobRole values
+job_roles_samp = random.sample(job_roles_pop, k=4)
+
+# Filter for rows where JobRole is in job_roles_samp
+jobrole_condition = attrition_pop['JobRole'].isin(job_roles_samp)
+attrition_filtered = attrition_pop[jobrole_condition]
+
+# Remove categories with no rows
+attrition_filtered['JobRole'] = attrition_filtered['JobRole'].cat.remove_unused_categories()
+
+# Randomly sample 10 employees from each sampled job role
+attrition_clust = attrition_filtered.groupby('JobRole').sample(n=10, random_state=2022)
+
+
+# Print the sample
+print(attrition_clust)
+~~~
+## 3 kinds of sampling
+~~~
+# Perform simple random sampling to get 0.25 of the population
+attrition_srs = attrition_pop.sample(frac=0.25, random_state=2022)
+
+# Perform stratified sampling to get 0.25 of each relationship group
+attrition_strat = attrition_pop.groupby('RelationshipSatisfaction').sample(frac=0.25, random_state=2022)
+
+# Create a list of unique RelationshipSatisfaction values
+satisfaction_unique = list(attrition_pop['RelationshipSatisfaction'].unique())
+
+# Randomly sample 2 unique satisfaction values
+satisfaction_samp = random.sample(satisfaction_unique, k=2)
+
+# Filter for satisfaction_samp and clear unused categories from RelationshipSatisfaction
+satis_condition = attrition_pop['RelationshipSatisfaction'].isin(satisfaction_samp)
+attrition_clust_prep = attrition_pop[satis_condition]
+attrition_clust_prep['RelationshipSatisfaction'] = attrition_clust_prep['RelationshipSatisfaction'].cat.remove_unused_categories()
+
+# Perform cluster sampling on the selected group, getting 0.25 of attrition_pop
+attrition_clust = attrition_clust_prep.groupby('RelationshipSatisfaction').sample(n=len(attrition_pop)//4, random_state=2022)
+~~~
