@@ -305,3 +305,17 @@ rel_error_pct100 = 100 * abs(mean_attrition_pop - mean_attrition_srs100)/mean_at
 # Print rel_error_pct100
 print(rel_error_pct100)
 ~~~
+## Replicating samples
+~~~
+# Create an empty list
+mean_attritions = []
+# Loop 500 times to create 500 sample means
+for i in range(500):
+	mean_attritions.append(
+    	attrition_pop.sample(n=60)['Attrition'].mean()
+	)
+
+# Create a histogram of the 500 sample means
+plt.hist(mean_attritions, bins=16)
+plt.show()
+~~~
