@@ -394,7 +394,7 @@ print(mean_of_means_50)
 print(mean_of_means_500)
 ~~~
 # Bootstrap Distributions
-##Generating a bootstrap distribution
+## Generating a bootstrap distribution
 ~~~
 # Generate 1 bootstrap resample
 spotify_1_resample = spotify_sample.sample(frac=1, replace=True)
@@ -424,4 +424,30 @@ print(mean_danceability_1000)
 # Draw a histogram of the resample means
 plt.hist(mean_danceability_1000)
 plt.show()
+~~~
+## Sampling distribution vs. bootstrap distribution
+~~~
+mean_popularity_2000_samp = []
+
+# Generate a sampling distribution of 2000 replicates
+for i in range(2000):
+    mean_popularity_2000_samp.append(
+    	# Sample 500 rows and calculate the mean popularity 
+    	spotify_population.sample(n=500)['popularity'].mean()
+    )
+
+# Print the sampling distribution results
+print(mean_popularity_2000_samp)
+
+mean_popularity_2000_boot = []
+
+# Generate a bootstrap distribution of 2000 replicates
+for i in range(2000):
+    mean_popularity_2000_boot.append(
+    	# Resample 500 rows and calculate the mean popularity     
+    	spotify_sample.sample(frac=1, replace=True)['popularity'].mean()
+    )
+
+# Print the bootstrap distribution results
+print(mean_popularity_2000_boot)
 ~~~
