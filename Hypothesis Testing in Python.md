@@ -45,3 +45,29 @@ upper = np.quantile(late_shipments_boot_distn, 0.975)
 # Print the confidence interval
 print((lower, upper))
 ~~~
+# Two-Sample and ANOVA Tests
+## Two sample mean test statistic
+~~~
+# Calculate the numerator of the test statistic
+numerator = xbar_yes - xbar_no
+
+# Calculate the denominator of the test statistic
+denominator = np.sqrt(s_yes**2/n_yes + s_no**2/n_no)
+
+# Calculate the test statistic
+t_stat = numerator/denominator
+
+# Print the test statistic
+print(t_stat)
+~~~
+## From t to p
+~~~
+# Calculate the degrees of freedom
+degrees_of_freedom = n_no + n_yes -2
+
+# Calculate the p-value from the test stat
+p_value = t.cdf(t_stat, df=degrees_of_freedom)
+
+# Print the p_value
+print(p_value)
+~~~
