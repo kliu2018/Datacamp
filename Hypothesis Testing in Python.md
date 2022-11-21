@@ -110,3 +110,30 @@ paired_test_results = pingouin.ttest(x=sample_dem_data['dem_percent_12'], y=samp
 # Print the paired test results
 print(paired_test_results)
 ~~~
+## Visualizing many categories
+~~~
+# Calculate the mean pack_price for each shipment_mode
+xbar_pack_by_mode = late_shipments.groupby('shipment_mode')['pack_price'].mean()
+
+# Print the grouped means
+print(xbar_pack_by_mode)
+
+# Calculate the mean pack_price for each shipment_mode
+xbar_pack_by_mode = late_shipments.groupby("shipment_mode")['pack_price'].mean()
+
+# Calculate the standard deviation of the pack_price for each shipment_mode
+s_pack_by_mode = late_shipments.groupby('shipment_mode')['pack_price'].std()
+
+# Print the grouped standard deviations
+print(s_pack_by_mode)
+
+# Calculate the mean pack_price for each shipment_mode
+xbar_pack_by_mode = late_shipments.groupby("shipment_mode")['pack_price'].mean()
+
+# Calculate the standard deviation of the pack_price for each shipment_mode
+s_pack_by_mode = late_shipments.groupby("shipment_mode")['pack_price'].std()
+
+# Boxplot of shipment_mode vs. pack_price
+sns.boxplot(data=late_shipments, x='pack_price', y='shipment_mode')
+plt.show()
+~~~
