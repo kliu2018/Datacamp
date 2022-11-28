@@ -192,3 +192,34 @@ p_value = 1 - norm.cdf(z_score)
 # Print the p-value
 print(p_value)
 ~~~
+## Test of two proportions
+~~~
+# Calculate the pooled estimate of the population proportion
+p_hat = (ns['expensive'] * p_hats['expensive'] + ns['reasonable'] * p_hats['reasonable'])/(ns['expensive'] + ns['reasonable'])
+# Print the result
+print(p_hat)
+
+# Calculate p_hat one minus p_hat
+p_hat_times_not_p_hat = (1- p_hat) * p_hat
+
+# Divide this by each of the sample sizes and then sum
+p_hat_times_not_p_hat_over_ns = p_hat_times_not_p_hat/ns['expensive'] + p_hat_times_not_p_hat/ns['reasonable']
+
+# Calculate the standard error
+std_error = np.sqrt(p_hat_times_not_p_hat_over_ns)
+
+# Print the result
+print(std_error)
+
+# Calculate the z-score
+z_score = (p_hats['expensive'] - p_hats['reasonable'])/std_error
+
+# Print z_score
+print(z_score)
+
+# Calculate the p-value from the z-score
+p_value = 1-norm.cdf(z_score)
+
+# Print p_value
+print(p_value)
+~~~
