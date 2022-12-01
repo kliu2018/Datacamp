@@ -268,3 +268,61 @@ expected, observed, stats = pingouin.chi2_independence(data=late_shipments, x='f
 # Print results
 print(stats[stats['test'] == 'pearson']) 
 ~~~
+## Course Outline
+Daily XP
+250
+
+
+
+
+
+Exercise
+Exercise
+Visualizing goodness of fit
+~~~
+# Find the number of rows in late_shipments
+n_total = len(late_shipments)
+
+# Print n_total
+print(n_total)
+
+# Create n column that is prop column * n_total
+hypothesized['n'] = hypothesized['prop'] * n_total
+
+# Print the modified hypothesized DataFrame
+print(hypothesized)
+ 
+ # Find the number of rows in late_shipments
+n_total = len(late_shipments)
+
+# Create n column that is prop column * n_total
+hypothesized["n"] = hypothesized["prop"] * n_total
+
+# Plot a red bar graph of n vs. vendor_inco_term for incoterm_counts
+plt.bar(incoterm_counts['vendor_inco_term'],  incoterm_counts['n'],color='r', label="Observed")
+plt.legend()
+plt.show()
+
+# Find the number of rows in late_shipments
+n_total = len(late_shipments)
+
+# Create n column that is prop column * n_total
+hypothesized["n"] = hypothesized["prop"] * n_total
+
+# Plot a red bar graph of n vs. vendor_inco_term for incoterm_counts
+plt.bar(incoterm_counts['vendor_inco_term'], incoterm_counts['n'], color="red", label="Observed")
+
+# Add a blue bar plot for the hypothesized counts
+plt.bar(hypothesized['vendor_inco_term'], hypothesized['n'], color='b', alpha=0.5, label="Hypothesized")
+plt.legend()
+plt.show()
+~~~
+## Performing a goodness of fit test
+~~~
+# Perform a goodness of fit test on the incoterm counts n
+gof_test = chisquare(f_obs=incoterm_counts['n'], f_exp=hypothesized['n'])
+
+
+# Print gof_test results
+print(gof_test)
+~~~
