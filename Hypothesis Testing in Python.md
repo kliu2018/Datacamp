@@ -326,6 +326,7 @@ gof_test = chisquare(f_obs=incoterm_counts['n'], f_exp=hypothesized['n'])
 # Print gof_test results
 print(gof_test)
 ~~~
+# Non-Parametric Tests
 ## Testing sample size
 ~~~
 # Count the freight_cost_group values
