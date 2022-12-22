@@ -1,4 +1,4 @@
-#Classification
+# Classification
 ## k-Nearest Neighbors: Fit
 ~~~
 from sklearn.neighbors import KNeighborsClassifier
@@ -12,4 +12,12 @@ knn = KNeighborsClassifier(n_neighbors=6)
 
 # Fit the classifier to the data
 knn.fit(X, y)
+~~~
+## k-Nearest Neighbors: Predict
+~~~
+# Predict the labels for the X_new
+y_pred = knn.predict(X_new)
+
+# Print the predictions for X_new
+print("Predictions: {}".format(y_pred)) 
 ~~~
