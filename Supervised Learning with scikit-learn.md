@@ -158,3 +158,19 @@ rmse = mean_squared_error(y_test, y_pred, squared=False)
 print("R^2: {}".format(r_squared))
 print("RMSE: {}".format(rmse))
 ~~~
+## Cross-validation for R-squared
+~~~
+# Import the necessary modules
+from sklearn.model_selection import cross_val_score, KFold
+
+# Create a KFold object
+kf = KFold(n_splits=6, shuffle=True, random_state=5)
+
+reg = LinearRegression()
+
+# Compute 6-fold cross-validation scores
+cv_scores = cross_val_score(reg, X, y, cv=kf)
+
+# Print scores
+print(cv_scores)
+~~~
