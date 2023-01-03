@@ -344,3 +344,19 @@ music_df["genre"] = np.where(music_df["genre"] == "Rock", 1, 0)
 print(music_df.isna().sum().sort_values())
 print("Shape of the `music_df`: {}".format(music_df.shape))
 ~~~
+## Pipeline for song genre prediction: I
+~~~
+# Import modules
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+
+# Instantiate an imputer
+imputer = SimpleImputer()
+
+# Instantiate a knn model
+knn = KNeighborsClassifier(n_neighbors=3)
+
+# Build steps for the pipeline
+steps = [("imputer", imputer), 
+         ("knn", knn)]
+~~~
