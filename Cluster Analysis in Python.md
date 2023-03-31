@@ -177,3 +177,14 @@ sns.scatterplot(x= 'x_scaled',
                 data = comic_con)
 plt.show()
 ~~~
+## Create a dendrogram
+~~~
+# Import the dendrogram function
+from scipy.cluster.hierarchy import dendrogram
+
+# Create a dendrogram
+dn = dendrogram(distance_matrix)
+
+# Display the dendogram
+plt.show()
+~~~
