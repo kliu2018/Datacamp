@@ -204,7 +204,7 @@ plt.show()
 ~~~
 
 # K-Means Clustering
-##K-means clustering: first exercise
+## K-means clustering: first exercise
 ~~~
 # Import the kmeans and vq functions
 from scipy.cluster.vq import kmeans, vq
@@ -259,6 +259,7 @@ plt.show()
 
 ## Impact of seeds on distinct clusters
 # Import random class
+~~~
 from numpy import random
 
 # Initialize seed
@@ -306,6 +307,7 @@ print(fifa[['scaled_def', 'scaled_phy', 'cluster_labels']].groupby('cluster_labe
 sns.scatterplot(x='scaled_def', y='scaled_phy', hue='cluster_labels', data=fifa)
 plt.show()
 ~~~
+
 # Clustering in Real World
 ## Extract RGB values from image
 ~~~
@@ -322,5 +324,5 @@ for row in batman_image:
         r.append(temp_r)
         g.append(temp_g)
         b.append(temp_b)
-~~~~
+ ~~~
 
