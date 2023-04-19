@@ -309,20 +309,18 @@ plt.show()
 # Clustering in Real World
 ## Extract RGB values from image
 ~~~
-distortions = []
-num_clusters = range(1, 7)
+# Import image class of matplotlib
+from matplotlib import image as img
 
-# Create a list of distortions from the kmeans function
-for i in ____:
-    cluster_centers, distortion = ____
-    distortions.append(____)
+# Read batman image and print dimensions
+batman_image = img.imread('batman.jpg')
+print(batman_image.shape)
 
-# Create a DataFrame with two lists, num_clusters and distortions
-elbow_plot = pd.DataFrame(____)
-
-# Create a line plot of num_clusters and distortions
-sns.lineplot(x=____, y=____, data = elbow_plot)
-plt.xticks(num_clusters)
-plt.show()
+# Store RGB values of all pixels in lists r, g and b
+for row in batman_image:
+    for temp_r, temp_g, temp_b in row:
+        r.append(temp_r)
+        g.append(temp_g)
+        b.append(temp_b)
 ~~~~
 
