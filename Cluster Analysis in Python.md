@@ -306,8 +306,7 @@ print(fifa[['scaled_def', 'scaled_phy', 'cluster_labels']].groupby('cluster_labe
 sns.scatterplot(x='scaled_def', y='scaled_phy', hue='cluster_labels', data=fifa)
 plt.show()
 ~~~
-# 
-Clustering in Real World
+# Clustering in Real World
 ## Extract RGB values from image
 ~~~
 # Import image class of matplotlib
